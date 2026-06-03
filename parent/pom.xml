@@ -166,40 +166,6 @@
     </build>
 
     <profiles>
-
-        <profile>
-        <!-- Generates SBOM. Skip with '-DskipSBOM'.-->
-            <id>sbom</id>
-            <activation>
-              <property>
-                <name>!skipSBOM</name>
-              </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.cyclonedx</groupId>
-                        <artifactId>cyclonedx-maven-plugin</artifactId>
-                        <configuration>
-                            <schemaVersion>1.4</schemaVersion>
-                            <projectType>library</projectType>
-                            <!-- Without this it doesn't generate cyclonedx files at all. -->
-                            <!-- Watch https://github.com/CycloneDX/cyclonedx-maven-plugin/issues/597 -->
-                            <skipNotDeployed>false</skipNotDeployed>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>makeAggregateBom</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
         <!--
             This profile provides configuration for the plugins that are required in
             order to deploy both release and snapshot artifacts.
@@ -264,6 +230,25 @@
                                 <id>attach-javadocs</id>
                                 <goals>
                                     <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.cyclonedx</groupId>
+                        <artifactId>cyclonedx-maven-plugin</artifactId>
+                        <configuration>
+                            <schemaVersion>1.4</schemaVersion>
+                            <projectType>library</projectType>
+                            <!-- Without this it doesn't generate cyclonedx files at all. -->
+                            <!-- Watch https://github.com/CycloneDX/cyclonedx-maven-plugin/issues/597 -->
+                            <skipNotDeployed>false</skipNotDeployed>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>makeAggregateBom</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -372,6 +357,25 @@
                                 <id>attach-javadocs</id>
                                 <goals>
                                     <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.cyclonedx</groupId>
+                        <artifactId>cyclonedx-maven-plugin</artifactId>
+                        <configuration>
+                            <schemaVersion>1.4</schemaVersion>
+                            <projectType>library</projectType>
+                            <!-- Without this it doesn't generate cyclonedx files at all. -->
+                            <!-- Watch https://github.com/CycloneDX/cyclonedx-maven-plugin/issues/597 -->
+                            <skipNotDeployed>false</skipNotDeployed>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>makeAggregateBom</goal>
                                 </goals>
                             </execution>
                         </executions>
